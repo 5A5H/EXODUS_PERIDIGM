@@ -1,7 +1,7 @@
 # Mainfile for EXODUS_PERIDIGM file writer
 
 # Execute provided tests
-ExecTest = 1; # 0 -> no test, 1 -> test TestCase1, 2 -> test TestCase2
+ExecTest = 0; # 0 -> no test, 1 -> test TestCase1, 2 -> test TestCase2
 
 if ExecTest==1:
     print('Starting Test Case 1');
