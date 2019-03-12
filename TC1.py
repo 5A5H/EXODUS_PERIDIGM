@@ -23,4 +23,4 @@ EXFile.report()
 # Write output file of type .ascii
 EXFile.WriteToFile()
 # Convert to binary format using 'ncgen'
-EXFile.ConvertToBinary()
+EXFile.ConvertToBinary(delete_ascii=False)

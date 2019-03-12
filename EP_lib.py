@@ -414,7 +414,7 @@ class EXODUS_PERIDIGM_MESH(Nodes):
         EXODUS_OUTPUT.close();
 
 ## Function to convert the .ascii mesh file
-    def ConvertToBinary(self):
+    def ConvertToBinary(self, delete_ascii=True):
         '''
         This function will try to convert the written .ascii file to the binary .g file.
         This can be read by Paraview and Peridigm.
@@ -423,3 +423,5 @@ class EXODUS_PERIDIGM_MESH(Nodes):
         Remark: On Windows maybe nessecary to give self.binaryfilename manually.
         '''
         print(subprocess.check_output(["ncgen","-o",self.binaryfilename,self.filename]));
+        if delete_ascii:
+            print(subprocess.check_output(["rm",self.filename]));
