@@ -1,0 +1,7 @@
+# This is the .gitignore file
+
+# compiled python
+*.pyc
+
+# .idea folder
+.idea/
