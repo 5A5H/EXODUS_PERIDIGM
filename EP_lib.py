@@ -342,39 +342,69 @@ class EXODUS_PERIDIGM_MESH(Nodes):
             EXODUS_OUTPUT.write(str(x) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
             ii=ii+1;
             if ii > 3:
-                EXODUS_OUTPUT.write("\n");
-                ii=1
-
+                EXODUS_OUTPUT.write("\n          ");
+                ii=1;
+        ii=1;
         EXODUS_OUTPUT.write("  coordy = ");
         for n, y in enumerate(self.ycoor):
             EXODUS_OUTPUT.write(str(y) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
+            ii=ii+1;
+            if ii > 3:
+                EXODUS_OUTPUT.write("\n          ");
+                ii=1;
+
+        ii=1;
         EXODUS_OUTPUT.write("  coordz = ");
         for n, z in enumerate(self.zcoor):
             EXODUS_OUTPUT.write(str(z) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
+            ii=ii+1;
+            if ii > 3:
+                EXODUS_OUTPUT.write("\n          ");
+                ii=1;
 
         # Write Elemental data
 
         ## for each node
         ## connectX = node1_of_elm1, node2_of_elm1, .... nodeN_of_elmN;
+        ii=1;
         for Number,ElmtBlk in enumerate(self.element_blocks):
             EXODUS_OUTPUT.write("  connect" + str(Number + 1) + " = ");
             for n,node in enumerate(ElmtBlk.element_block_node_list):
                 EXODUS_OUTPUT.write(str(node) + (";\n" if n == len(ElmtBlk.element_block_node_list) - 1 else ", "));
+                ii=ii+1;
+                if ii > 3:
+                    EXODUS_OUTPUT.write("\n          ");
+                    ii=1;
 
         ## element map = 1,2,3,... n_elem;
+        ii=1;
         EXODUS_OUTPUT.write("  elem_map = ");
         for i in range(self.NumberOfElements):
             EXODUS_OUTPUT.write(str(i + 1) + (";\n" if i == self.NumberOfElements - 1 else ", "));
+            ii=ii+1;
+            if ii > 3:
+                EXODUS_OUTPUT.write("\n          ");
+                ii=1;
 
         ## elem_num_map = 1,2,3,... n_elem;
+        ii=1;
         EXODUS_OUTPUT.write("  elem_num_map = ");
         for i in range(self.NumberOfElements):
             EXODUS_OUTPUT.write(str(i + 1) + (";\n" if i == self.NumberOfElements - 1 else ", "));
+            ii=ii+1;
+            if ii > 3:
+                EXODUS_OUTPUT.write("\n          ");
+                ii=1;
 
         ## eb_names = "", "", .. n_number_of_element_blocks;
+        ii=1;
         EXODUS_OUTPUT.write("  eb_names = ");
         for i in range(self.NumberOfElementBlocks):
             EXODUS_OUTPUT.write("\"\"" + (";\n" if i == self.NumberOfElementBlocks - 1 else ", "));
+            ii=ii+1;
+            if ii > 3:
+                EXODUS_OUTPUT.write("\n          ");
+                ii=1;
 
 
         # Write Node Set data
@@ -389,12 +419,23 @@ class EXODUS_PERIDIGM_MESH(Nodes):
         ## node_nsX = 1,4,6,...34, n_number_of_nodes_in_set
         ## dist_fact_ns_X = 1,1,1,1,1.... number_of_nodes_in_set
         for Number, NodeSet in enumerate(self.node_sets):
+            ii=1;
             EXODUS_OUTPUT.write("  node_ns" + str(Number + 1) + " = ");
             for num, node in enumerate(NodeSet.node_set_node_list):
                 EXODUS_OUTPUT.write(str(node)+(";\n" if num ==NodeSet.nodes_in_this_set - 1 else ", "));
+                ii=ii+1;
+                if ii > 3:
+                    EXODUS_OUTPUT.write("\n          ");
+                    ii=1;
+
+            ii=1;
             EXODUS_OUTPUT.write("  dist_fact_ns" + str(Number + 1) + " = ");
             for num, node in enumerate(NodeSet.node_set_node_list):
                 EXODUS_OUTPUT.write("1" + (";\n" if num == NodeSet.nodes_in_this_set - 1 else ", "));
+                ii=ii+1;
+                if ii > 3:
+                    EXODUS_OUTPUT.write("\n          ");
+                    ii=1;
 
 # Functions to write output
 
