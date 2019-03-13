@@ -235,7 +235,7 @@ class EXODUS_PERIDIGM_MESH(Nodes):
         '''
         EXODUS_OUTPUT.write("dimensions:\n");
         EXODUS_OUTPUT.write("    len_string = "+str(33)+" ;\n");
-        EXODUS_OUTPUT.write("    len_line = " + str(999) + " ;\n");
+        EXODUS_OUTPUT.write("    len_line = " + str(81) + " ;\n");
         EXODUS_OUTPUT.write("    four = " + str(4) + " ;\n");
         EXODUS_OUTPUT.write("    len_name = " + str(33) + " ;\n");
         EXODUS_OUTPUT.write("    time_step = UNLIMITED ;\n");
@@ -336,9 +336,15 @@ class EXODUS_PERIDIGM_MESH(Nodes):
         EXODUS_OUTPUT.write("  coor_names = \"x\",\"y\",\"z\";\n");
 
         ## nodal coordinates
+        ii=1;
         EXODUS_OUTPUT.write("  coordx = ");
         for n, x in enumerate(self.xcoor):
             EXODUS_OUTPUT.write(str(x) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
+            ii=ii+1;
+            if ii > 3:
+                EXODUS_OUTPUT.write("\n");
+                ii=1
+
         EXODUS_OUTPUT.write("  coordy = ");
         for n, y in enumerate(self.ycoor):
             EXODUS_OUTPUT.write(str(y) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
