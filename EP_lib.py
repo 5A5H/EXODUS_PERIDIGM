@@ -339,7 +339,7 @@ class EXODUS_PERIDIGM_MESH(Nodes):
         ii=1;
         EXODUS_OUTPUT.write("  coordx = ");
         for n, x in enumerate(self.xcoor):
-            EXODUS_OUTPUT.write(str(x) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
+            EXODUS_OUTPUT.write(str(round(x, 2)) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
             ii=ii+1;
             if ii > 3:
                 EXODUS_OUTPUT.write("\n          ");
@@ -347,7 +347,7 @@ class EXODUS_PERIDIGM_MESH(Nodes):
         ii=1;
         EXODUS_OUTPUT.write("  coordy = ");
         for n, y in enumerate(self.ycoor):
-            EXODUS_OUTPUT.write(str(y) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
+            EXODUS_OUTPUT.write(str(round(y, 2)) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
             ii=ii+1;
             if ii > 3:
                 EXODUS_OUTPUT.write("\n          ");
@@ -356,7 +356,7 @@ class EXODUS_PERIDIGM_MESH(Nodes):
         ii=1;
         EXODUS_OUTPUT.write("  coordz = ");
         for n, z in enumerate(self.zcoor):
-            EXODUS_OUTPUT.write(str(z) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
+            EXODUS_OUTPUT.write(str(round(z, 8)) + (";\n" if n == self.NumberOfNodes - 1 else ", "));
             ii=ii+1;
             if ii > 3:
                 EXODUS_OUTPUT.write("\n          ");
